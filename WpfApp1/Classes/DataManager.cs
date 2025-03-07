@@ -53,24 +53,25 @@ namespace WpfApp1.Classes
                     Role = userData[4],
                 };
                 Users.Add(userClass);
-
-                var queries = File.ReadAllLines("query.csv");
-                foreach (var query in queries)
-                {
-                    if (string.IsNullOrEmpty(query))
-                    {
-                        continue;
-                    }
-                    var queryData = user.Split(',');
-                    var queryClass = new Query()
-                    {
-                        ManagerName = queryData[0],
-                        ChangeType = userData[1],
-                        EmployeeName = userData[2]
-                    };
-                    Queries.Add(queryClass);
-                }
             }
+
+            var queries = File.ReadAllLines("query.csv");
+            foreach (var query in queries)
+            {
+                if (string.IsNullOrEmpty(query))
+                {
+                    continue;
+                }
+                var queryData = query.Split(',');
+                var queryClass = new Query()
+                {
+                    ManagerName = queryData[0],
+                    ChangeType = queryData[1],
+                    EmployeeName = queryData[2]
+                };
+                Queries.Add(queryClass);
+            }
+            
         }
     }
 }
